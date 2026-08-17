@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IRONCLAD — No Shortcuts. No Excuses.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="grit"></div>
+
+<nav>
+  <div class="nav-logo">IRON<span>CLAD</span></div>
+  <div class="nav-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="programs.html">Training</a>
+    <a href="facilities.html">Facilities</a>
+    <a href="testimonials.html">Results</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Visit The Gym</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow mono">ESTABLISHED FOR THOSE WHO SHOW UP</div>
+  <h1>TRAIN LIKE<br>IT <span class="stroke">MEANS</span><br>SOMETHING.</h1>
+  <p class="hero-sub">IRONCLAD is a general fitness gym built for people done making excuses. Free weights, real equipment, no fluff — just the work.</p>
+  <div class="hero-ctas">
+    <a href="contact.html" class="btn-primary">Come See The Gym</a>
+    <a href="about.html" class="btn-ghost">Why Ironclad</a>
+  </div>
+  <div class="scroll-cue mono"><div class="line"></div>SCROLL</div>
+</section>
+
+<footer>
+  <div><span class="brand">IRONCLAD</span> — No shortcuts. No excuses.</div>
+  <div>&copy; 2026 Ironclad Athletic Gym</div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>

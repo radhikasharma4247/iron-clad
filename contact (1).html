@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — IRONCLAD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="grit"></div>
+
+<nav>
+  <div class="nav-logo"><a href="index.html">IRON<span>CLAD</span></a></div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="programs.html">Training</a>
+    <a href="facilities.html">Facilities</a>
+    <a href="testimonials.html">Results</a>
+    <a href="contact.html" class="active">Contact</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Visit The Gym</a>
+</nav>
+
+<section class="page-hero">
+  <div class="eyebrow">GET IN TOUCH</div>
+  <h1>Come put in<br>the work.</h1>
+</section>
+
+<section class="contact" style="clip-path:none; padding-top:0;">
+  <div class="contact-grid">
+    <div class="contact-info reveal in">
+      <div>
+        <div class="contact-block-label">Location</div>
+        <div class="contact-block-value">412 Foundry Street<br>Industrial District</div>
+      </div>
+      <div>
+        <div class="contact-block-label">Hours</div>
+        <div class="contact-block-value">5:00 AM – 11:00 PM<br>Every day, no exceptions</div>
+      </div>
+      <div>
+        <div class="contact-block-label">Reach Us</div>
+        <div class="contact-block-value">
+          <a href="tel:+10000000000">(000) 000-0000</a><br>
+          <a href="mailto:train@ironcladgym.com">train@ironcladgym.com</a>
+        </div>
+      </div>
+    </div>
+    <form class="reveal in" onsubmit="event.preventDefault(); this.querySelector('.submit-btn').textContent='Message Sent';">
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" type="text" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" required>
+      </div>
+      <div class="field">
+        <label for="message">What do you want to know?</label>
+        <textarea id="message" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div><span class="brand">IRONCLAD</span> — No shortcuts. No excuses.</div>
+  <div>&copy; 2026 Ironclad Athletic Gym</div>
+</footer>
+
+</body>
+</html>
