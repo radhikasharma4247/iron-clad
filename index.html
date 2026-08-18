@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radhika Ebooks — Business Templates & Ebooks for Working Professionals</title>
+<meta name="description" content="Practical ebooks and ready-to-use templates for productivity, finance and small business — built to save you time, not add to your to-do list.">
+<meta property="og:title" content="Radhika Ebooks — Business Templates & Ebooks">
+<meta property="og:description" content="Practical ebooks and ready-to-use templates for productivity, finance and small business.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   RADHIKA EBOOKS — DESIGN SYSTEM
+   Blue + beige, professional-but-warm, "planner & ledger" world
+   ========================================================================== */
+
+:root {
+  /* Color */
+  --color-ink: #16232F;
+  --color-navy: #1F3A5C;
+  --color-navy-deep: #142A42;
+  --color-navy-light: #3E6690;
+  --color-beige: #EFE6D8;
+  --color-beige-deep: #DCCFB8;
+  --color-beige-line: #CBBBA0;
+  --color-gold: #B98B4E;
+  --color-gold-deep: #9C7238;
+  --color-muted: #7C7566;
+  --color-white: #FFFDF9;
+  --color-error: #A6403A;
+  --color-success: #4A7A5E;
+
+  /* Type */
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* Scale */
+  --step--1: clamp(0.83rem, 0.8rem + 0.15vw, 0.9rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.1rem);
+  --step-1: clamp(1.2rem, 1.13rem + 0.35vw, 1.4rem);
+  --step-2: clamp(1.5rem, 1.36rem + 0.7vw, 1.9rem);
+  --step-3: clamp(1.95rem, 1.7rem + 1.25vw, 2.6rem);
+  --step-4: clamp(2.5rem, 2.05rem + 2.25vw, 3.75rem);
+  --step-5: clamp(3.2rem, 2.5rem + 3.5vw, 5.2rem);
+
+  /* Layout */
+  --container: 1180px;
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  --radius-lg: 26px;
+  --border: 1px solid var(--color-beige-line);
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 160ms;
+  --dur-med: 420ms;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--color-beige);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.12;
+  margin: 0;
+  letter-spacing: -0.01em;
+  color: var(--color-navy-deep);
+}
+h1 { font-size: var(--step-5); }
+h2 { font-size: var(--step-3); }
+h3 { font-size: var(--step-2); }
+h4 { font-size: var(--step-1); }
+
+p { margin: 0 0 1em; color: var(--color-ink); }
+.lede { font-size: var(--step-1); color: var(--color-muted); max-width: 60ch; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-gold-deep);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.eyebrow::before {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--color-gold-deep);
+  display: inline-block;
+}
+
+/* Focus states — accessibility */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid var(--color-navy);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--color-navy);
+  color: var(--color-white);
+  padding: 12px 20px;
+  z-index: 200;
+  border-radius: 0 0 8px 0;
+}
+.skip-link:focus { left: 0; }
+
+/* ==========================================================================
+   LEDGER LINE MOTIF — signature texture
+   ========================================================================== */
+.ledger-bg {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 43px,
+    rgba(31, 58, 92, 0.08) 44px
+  );
+}
+.ledger-margin {
+  position: relative;
+}
+.ledger-margin::before {
+  content: "";
+  position: absolute;
+  left: 64px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(185, 139, 78, 0.35);
+}
+
+/* ==========================================================================
+   HEADER / NAV
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(239, 230, 216, 0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: var(--border);
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 18px;
+}
+.brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--step-1);
+  color: var(--color-navy-deep);
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.brand-mark {
+  font-family: var(--font-mono);
+  font-size: 0.6em;
+  color: var(--color-gold-deep);
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--step--1);
+}
+.nav-links a {
+  position: relative;
+  padding-block: 4px;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 1px;
+  background: var(--color-gold-deep);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--dur-fast) var(--ease);
+}
+.nav-links a:hover::after, .nav-links a[aria-current="page"]::after { transform: scaleX(1); transform-origin: left; }
+.nav-links a[aria-current="page"] { color: var(--color-navy-deep); font-weight: 600; }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.nav-toggle span, .nav-toggle span::before, .nav-toggle span::after {
+  content: "";
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-navy-deep);
+  position: relative;
+  transition: transform var(--dur-fast) var(--ease);
+}
+.nav-toggle span::before { position: absolute; top: -7px; }
+.nav-toggle span::after { position: absolute; top: 7px; }
+
+@media (max-width: 860px) {
+  .nav-toggle { display: block; }
+  .nav-links {
+    position: fixed;
+    inset: 0 0 auto 0;
+    top: 66px;
+    flex-direction: column;
+    background: var(--color-beige);
+    border-bottom: var(--border);
+    padding: 24px;
+    gap: 20px;
+    align-items: flex-start;
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all var(--dur-med) var(--ease);
+  }
+  .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--step--1);
+  padding: 14px 26px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+.btn-primary:hover { background: var(--color-navy-deep); transform: translateY(-1px); }
+.btn-gold {
+  background: var(--color-gold);
+  color: var(--color-white);
+}
+.btn-gold:hover { background: var(--color-gold-deep); transform: translateY(-1px); }
+.btn-ghost {
+  background: transparent;
+  color: var(--color-navy-deep);
+  border-color: var(--color-navy-deep);
+}
+.btn-ghost:hover { background: var(--color-navy-deep); color: var(--color-white); }
+.btn-sm { padding: 10px 18px; font-size: var(--step--1); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* ==========================================================================
+   SECTIONS
+   ========================================================================== */
+section { padding-block: clamp(56px, 9vw, 120px); }
+.section-head {
+  max-width: 640px;
+  margin-bottom: 48px;
+}
+.section-head h2 { margin-top: 12px; }
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero {
+  padding-block: clamp(72px, 12vw, 140px) clamp(56px, 8vw, 100px);
+  position: relative;
+  overflow: hidden;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 56px;
+  align-items: center;
+}
+.hero h1 { margin-top: 16px; }
+.hero .lede { margin-top: 20px; margin-bottom: 32px; }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.hero-card {
+  background: var(--color-white);
+  border: var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: 0 30px 60px -30px rgba(22, 35, 47, 0.25);
+  transform: rotate(1.2deg);
+}
+.hero-card-inner {
+  border: 1px dashed var(--color-beige-line);
+  border-radius: var(--radius-md);
+  padding: 24px;
+}
+.ledger-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 10px;
+  border-bottom: 1px solid var(--color-beige-deep);
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+}
+.ledger-row:last-child { border-bottom: none; }
+.ledger-row .tag {
+  font-family: var(--font-body);
+  color: var(--color-ink);
+}
+.ledger-row .amount { color: var(--color-navy); font-weight: 600; }
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-card { transform: none; }
+}
+
+/* ==========================================================================
+   PRODUCT CARDS / GRID
+   ========================================================================== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+@media (max-width: 960px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .grid { grid-template-columns: 1fr; } }
+
+.card {
+  background: var(--color-white);
+  border: var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+  display: flex;
+  flex-direction: column;
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px -28px rgba(22,35,47,0.28); }
+
+.card-cover {
+  aspect-ratio: 4/3;
+  background: linear-gradient(160deg, var(--color-navy) 0%, var(--color-navy-deep) 100%);
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  color: var(--color-beige);
+}
+.card-cover .kind {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: rgba(255,255,255,0.12);
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+.card-body { padding: 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.card-body h4 { color: var(--color-navy-deep); }
+.card-body p { color: var(--color-muted); font-size: var(--step--1); margin-bottom: 6px; flex: 1; }
+.card-foot { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+.price { font-family: var(--font-mono); font-weight: 600; color: var(--color-navy); font-size: var(--step-0); }
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+.filter-tab {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  padding: 9px 16px;
+  border: 1px solid var(--color-beige-line);
+  border-radius: 20px 20px 0 0;
+  background: var(--color-beige-deep);
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease);
+  border-bottom: 3px solid transparent;
+}
+.filter-tab:hover { color: var(--color-navy-deep); }
+.filter-tab[aria-pressed="true"] {
+  background: var(--color-white);
+  color: var(--color-navy-deep);
+  border-bottom-color: var(--color-gold);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   FEATURE / SPLIT
+   ========================================================================== */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+@media (max-width: 900px) { .split { grid-template-columns: 1fr; gap: 32px; } }
+.split.reverse .split-media { order: 2; }
+
+.icon-list { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+.icon-list li { display: flex; gap: 14px; align-items: flex-start; }
+.icon-list .bullet {
+  flex-shrink: 0;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--color-navy);
+  color: var(--color-white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  margin-top: 2px;
+}
+
+.stat-card {
+  background: var(--color-white);
+  border: var(--border);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+}
+.stat-row { display: flex; gap: 40px; flex-wrap: wrap; }
+.stat { }
+.stat .num { font-family: var(--font-display); font-size: var(--step-3); color: var(--color-navy); }
+.stat .label { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-muted); }
+
+/* ==========================================================================
+   TESTIMONIAL
+   ========================================================================== */
+.testimonial-strip {
+  background: var(--color-navy-deep);
+  color: var(--color-beige);
+}
+.testimonial-strip .eyebrow { color: var(--color-gold); }
+.testimonial-strip .eyebrow::before { background: var(--color-gold); }
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+@media (max-width: 900px) { .testimonial-grid { grid-template-columns: 1fr; } }
+.testimonial {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-md);
+  padding: 28px;
+}
+.testimonial p { color: rgba(239,230,216,0.9); font-size: var(--step--1); }
+.testimonial .who { font-family: var(--font-mono); font-size: 0.78rem; color: var(--color-gold); margin-top: 12px; }
+
+/* ==========================================================================
+   CTA BAND
+   ========================================================================== */
+.cta-band {
+  background: var(--color-gold);
+  border-radius: var(--radius-lg);
+  padding: clamp(40px, 6vw, 72px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  color: var(--color-navy-deep);
+}
+.cta-band h2 { color: var(--color-navy-deep); }
+.cta-band .btn-primary { background: var(--color-navy-deep); }
+
+/* ==========================================================================
+   FAQ ACCORDION
+   ========================================================================== */
+.accordion { border-top: var(--border); }
+.accordion-item { border-bottom: var(--border); }
+.accordion-trigger {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 22px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  gap: 20px;
+}
+.accordion-trigger h4 { font-size: var(--step-0); font-family: var(--font-body); font-weight: 600; color: var(--color-ink); }
+.accordion-icon {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--color-navy-deep);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  transition: transform var(--dur-fast) var(--ease);
+}
+.accordion-icon::before, .accordion-icon::after {
+  content: "";
+  position: absolute;
+  background: var(--color-navy-deep);
+}
+.accordion-icon::before { width: 10px; height: 1px; }
+.accordion-icon::after { width: 1px; height: 10px; transition: transform var(--dur-fast) var(--ease); }
+.accordion-item[data-open="true"] .accordion-icon::after { transform: scaleY(0); }
+.accordion-item[data-open="true"] .accordion-icon { transform: rotate(180deg); }
+.accordion-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--dur-med) var(--ease);
+}
+.accordion-panel-inner { padding-bottom: 22px; color: var(--color-muted); max-width: 65ch; }
+
+/* ==========================================================================
+   FORMS
+   ========================================================================== */
+.form-field { margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; }
+label { font-size: var(--step--1); font-weight: 600; color: var(--color-navy-deep); }
+input, textarea, select {
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  padding: 13px 16px;
+  border: 1px solid var(--color-beige-line);
+  border-radius: var(--radius-sm);
+  background: var(--color-white);
+  color: var(--color-ink);
+}
+input:invalid[data-touched="true"], textarea:invalid[data-touched="true"] { border-color: var(--color-error); }
+.field-error { color: var(--color-error); font-size: var(--step--1); display: none; }
+.field-error.show { display: block; }
+.form-status { margin-top: 16px; font-size: var(--step--1); display: none; padding: 14px 16px; border-radius: var(--radius-sm); }
+.form-status.show { display: block; }
+.form-status.success { background: rgba(74,122,94,0.12); color: var(--color-success); display: block; }
+.form-status.error { background: rgba(166,64,58,0.12); color: var(--color-error); display: block; }
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.site-footer {
+  border-top: var(--border);
+  background: var(--color-beige-deep);
+  padding-block: 56px 32px;
+  margin-top: 40px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px;
+}
+@media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+.footer-grid h5 {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-navy-deep);
+  margin-bottom: 16px;
+}
+.footer-links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { color: var(--color-muted); font-size: var(--step--1); }
+.footer-links a:hover { color: var(--color-navy-deep); }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-beige-line);
+  font-size: var(--step--1);
+  color: var(--color-muted);
+}
+
+/* ==========================================================================
+   UTILITIES
+   ========================================================================== */
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+.text-center { text-align: center; margin-inline: auto; }
+.mt-0 { margin-top: 0; }
+.breadcrumb { font-family: var(--font-mono); font-size: var(--step--1); color: var(--color-muted); margin-bottom: 20px; }
+.breadcrumb a:hover { color: var(--color-navy); }
+
+/* Page-load reveal */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity var(--dur-med) var(--ease), transform var(--dur-med) var(--ease);
+}
+[data-reveal].in-view { opacity: 1; transform: translateY(0); }
+
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand">Radhika <span class="brand-mark">Ebooks</span></a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html" aria-current="page">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="shop.html" class="btn btn-primary btn-sm">Browse Shop</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero ledger-bg">
+    <div class="container hero-grid">
+      <div data-reveal>
+        <span class="eyebrow">Ebooks &amp; Templates for Working Life</span>
+        <h1>Run your work &amp; your business off one clean page.</h1>
+        <p class="lede">Radhika Ebooks makes practical guides and ready-to-use templates for productivity, finance and small business — built by someone who's used them, not just designed them.</p>
+        <div class="hero-actions">
+          <a href="shop.html" class="btn btn-primary">Browse the shop</a>
+          <a href="about.html" class="btn btn-ghost">Why Radhika Ebooks</a>
+        </div>
+      </div>
+      <div data-reveal>
+        <div class="hero-card">
+          <div class="eyebrow" style="margin-bottom:14px;">This Month's Ledger</div>
+          <div class="hero-card-inner">
+            <div class="ledger-row"><span class="tag">Quarterly Budget Tracker</span><span class="amount">₹399</span></div>
+            <div class="ledger-row"><span class="tag">Freelance Invoice Kit</span><span class="amount">₹299</span></div>
+            <div class="ledger-row"><span class="tag">90-Day Focus Planner</span><span class="amount">₹349</span></div>
+            <div class="ledger-row"><span class="tag">Small Biz Starter Guide</span><span class="amount">₹499</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED CATEGORIES -->
+  <section>
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Start Here</span>
+        <h2>Two kinds of tools. One goal: less time spent figuring things out.</h2>
+      </div>
+      <div class="grid" data-reveal>
+        <a href="shop.html" class="card">
+          <div class="card-cover"><span class="kind">Templates</span></div>
+          <div class="card-body">
+            <h4>Ready-to-use templates</h4>
+            <p>Spreadsheets, trackers and planners you can open and start using the same day — budgets, invoices, project boards and more.</p>
+            <div class="card-foot"><span class="price">From ₹199</span><span class="btn btn-ghost btn-sm">Explore</span></div>
+          </div>
+        </a>
+        <a href="shop.html" class="card">
+          <div class="card-cover"><span class="kind">Ebooks</span></div>
+          <div class="card-body">
+            <h4>Practical guides</h4>
+            <p>Short, focused ebooks on running a small business, managing money and staying organised — written to be applied, not just read.</p>
+            <div class="card-foot"><span class="price">From ₹299</span><span class="btn btn-ghost btn-sm">Explore</span></div>
+          </div>
+        </a>
+        <a href="shop.html" class="card">
+          <div class="card-cover"><span class="kind">Bundles</span></div>
+          <div class="card-body">
+            <h4>Guide + template bundles</h4>
+            <p>The ebook and the matching template together, at a lower combined price — the fastest way to actually put the advice to work.</p>
+            <div class="card-foot"><span class="price">From ₹549</span><span class="btn btn-ghost btn-sm">Explore</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY / SPLIT -->
+  <section>
+    <div class="container split">
+      <div data-reveal>
+        <span class="eyebrow">Why Radhika Ebooks</span>
+        <h2>Built for people who are already busy.</h2>
+        <p class="lede" style="margin-top:16px;">Every template is designed to be usable in the first five minutes, and every guide is written to get you to a decision, not just more reading.</p>
+        <ul class="icon-list">
+          <li><span class="bullet">01</span><div><strong>No setup tutorials.</strong><p style="margin:4px 0 0;">Open a template and it's already labelled, formatted, and ready for your numbers.</p></div></li>
+          <li><span class="bullet">02</span><div><strong>Written for real workloads.</strong><p style="margin:4px 0 0;">Made for people juggling a job or a small business, not full-time optimisation hobbyists.</p></div></li>
+          <li><span class="bullet">03</span><div><strong>Priced to actually buy.</strong><p style="margin:4px 0 0;">One-time purchases, no subscriptions, no upsell maze.</p></div></li>
+        </ul>
+      </div>
+      <div data-reveal>
+        <div class="stat-card">
+          <div class="stat-row">
+            <div class="stat"><div class="num">30+</div><div class="label">Templates &amp; Guides</div></div>
+            <div class="stat"><div class="num">5 min</div><div class="label">Avg. Setup Time</div></div>
+          </div>
+          <div style="margin-top:28px;">
+            <div class="stat"><div class="num">1x</div><div class="label">Payment — No Subscriptions</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonial-strip">
+    <div class="container">
+      <span class="eyebrow" data-reveal>What People Say</span>
+      <h2 style="color:var(--color-beige); margin-top:12px;" data-reveal>Trusted by professionals who don't have time to waste.</h2>
+      <div class="testimonial-grid" data-reveal>
+        <div class="testimonial">
+          <p>"The invoice kit saved me from rebuilding my billing sheet from scratch every quarter. Genuinely just works."</p>
+          <div class="who">— Freelance Consultant</div>
+        </div>
+        <div class="testimonial">
+          <p>"Finally a budgeting guide that doesn't assume I have three hours a week to spare on spreadsheets."</p>
+          <div class="who">— Small Business Owner</div>
+        </div>
+        <div class="testimonial">
+          <p>"Clean, no fluff, and the template was ready to use straight away."</p>
+          <div class="who">— Marketing Manager</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="container">
+      <div class="cta-band" data-reveal>
+        <div>
+          <h2>Ready to get organised this quarter?</h2>
+          <p style="margin-top:10px; color:var(--color-navy-deep); opacity:0.85;">Browse the full shop — templates, ebooks and bundles.</p>
+        </div>
+        <a href="shop.html" class="btn btn-primary">Browse the shop</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="brand">Radhika <span class="brand-mark">Ebooks</span></a>
+        <p style="margin-top:14px; color:var(--color-muted); font-size:var(--step--1); max-width:32ch;">Practical ebooks and templates for productivity, finance and small business.</p>
+      </div>
+      <div>
+        <h5>Shop</h5>
+        <ul class="footer-links">
+          <li><a href="shop.html">All Products</a></li>
+          <li><a href="shop.html">Templates</a></li>
+          <li><a href="shop.html">Ebooks</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul class="footer-links">
+          <li><a href="faq.html">Refund Policy</a></li>
+          <li><a href="faq.html">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Radhika Ebooks. All rights reserved.</span>
+      <span>Made for people with better things to do.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ==========================================================================
+// RADHIKA EBOOKS — shared interactions
+// ==========================================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ---- Mobile nav toggle ---- */
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  /* ---- Scroll reveal ---- */
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window && revealEls.length) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in-view'));
+  }
+
+  /* ---- FAQ accordion ---- */
+  document.querySelectorAll('.accordion-item').forEach(item => {
+    const trigger = item.querySelector('.accordion-trigger');
+    const panel = item.querySelector('.accordion-panel');
+    if (!trigger || !panel) return;
+    trigger.addEventListener('click', () => {
+      const isOpen = item.getAttribute('data-open') === 'true';
+      // close siblings within the same accordion (optional single-open behaviour)
+      const accordion = item.closest('.accordion');
+      if (accordion) {
+        accordion.querySelectorAll('.accordion-item[data-open="true"]').forEach(other => {
+          if (other !== item) {
+            other.setAttribute('data-open', 'false');
+            other.querySelector('.accordion-panel').style.maxHeight = null;
+            other.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+      item.setAttribute('data-open', isOpen ? 'false' : 'true');
+      trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      panel.style.maxHeight = isOpen ? null : panel.scrollHeight + 'px';
+    });
+  });
+
+  /* ---- Product filter tabs (Shop page) ---- */
+  const filterTabs = document.querySelectorAll('.filter-tab');
+  const productCards = document.querySelectorAll('[data-category]');
+  if (filterTabs.length && productCards.length) {
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => t.setAttribute('aria-pressed', 'false'));
+        tab.setAttribute('aria-pressed', 'true');
+        const cat = tab.getAttribute('data-filter');
+        productCards.forEach(card => {
+          const match = cat === 'all' || card.getAttribute('data-category') === cat;
+          card.style.display = match ? '' : 'none';
+        });
+      });
+    });
+  }
+
+  /* ---- Contact form validation (client-side only demo) ---- */
+  const form = document.querySelector('#contact-form');
+  if (form) {
+    const status = form.querySelector('.form-status');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let valid = true;
+      form.querySelectorAll('[required]').forEach(field => {
+        field.setAttribute('data-touched', 'true');
+        const errorEl = field.closest('.form-field')?.querySelector('.field-error');
+        if (!field.checkValidity()) {
+          valid = false;
+          if (errorEl) errorEl.classList.add('show');
+        } else if (errorEl) {
+          errorEl.classList.remove('show');
+        }
+      });
+
+      if (!status) return;
+      status.classList.remove('success', 'error', 'show');
+
+      if (!valid) {
+        status.textContent = 'Please fix the highlighted fields before sending.';
+        status.classList.add('error', 'show');
+        return;
+      }
+
+      // No backend is connected yet — this is a front-end-only placeholder.
+      status.textContent = "This form isn't connected to an inbox yet — hook it up to Formspree, Netlify Forms, or an email service to start receiving messages.";
+      status.classList.add('error', 'show');
+    });
+
+    form.querySelectorAll('input, textarea').forEach(field => {
+      field.addEventListener('blur', () => field.setAttribute('data-touched', 'true'));
+    });
+  }
+
+});
+
+</script>
+</body>
+</html>
